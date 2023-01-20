@@ -113,13 +113,8 @@
 
 <div class="pos-f-t">
     <nav class="navbar navbar-dark bg-dark">
-        {% if page.lang == "da-DK" %}
-        <a href="/indexDK"><img src="/images/DAN.png" class="rounded-circle" height="65px" alt="Me"></a>
-        <a class="navbar-brand nav-link text-white" href="/indexDK">Dan Kristiansen</a>
-        {% else %}
-        <a href="/index"><img src="/images/DAN.png" class="rounded-circle" height="65px" alt="Me"></a>
-        <a class="navbar-brand nav-link text-white" href="/index">Dan Kristiansen</a>
-        {% endif %}
+        <a href="/index"><img src="/images/Kristina.png" class="rounded-circle" height="65px" alt="Me"></a>
+        <a class="navbar-brand nav-link text-white" href="/index">Kristina Vestermark</a>
       <button id="toggle-content" class="mt-1 navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#collapseToggle">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -127,37 +122,12 @@
     <div class="collapse" id="collapseToggle">
         <div class="bg-dark text-white">
           <ul class="nav flex-column">
-              <li class="pt-1"> <a class="mr-2" href="https://www.linkedin.com/in/dan-kristiansen-35a460161"><img width="25px" src="/images/linkedin.png"></a><a class="mr-2" href="https://github.com/dank100"><img width="25px" src="/images/github-logo.png"></a><a href="https://gitlab.com/DanK0"><img width="25px" src="/images/gitlab-logo.png"></a></li>
-              <li class="nav-item">
-              <p>Languages:
-              {% if page.type != "page" %}
-                {% assign posts=site.posts | where:"lang-ref", page.lang-ref %}
-                {% assign dkposts=posts | where:"lang", "da-DK" %}
-                {% assign enposts=posts | where:"lang", "en" %}
-              {% else %}
-                {% assign pages=site.pages | where:"lang-ref", page.lang-ref %}
-                {% assign dkposts=pages | where:"lang", "da-DK" %}
-                {% assign enposts=pages | where:"lang", "en" %}
-              {% endif %}
-              <a class="languageselectors" languageselect="da-DK" href="{{ dkposts.first.url }}">Da</a> |
-              <a class="languageselectors" languageselect="en" href="{{ enposts.first.url }}">En</a>
+              <li class="pt-1"> <a class="mr-2" href="https://www.linkedin.com/in/kristina-marie-vestermark-jones-2359a7149"><img width="25px" src="/images/linkedin.png"></a></li>
               </p>
             </li>
               <li class="nav-item">
                 <a class="nav-link" href="/index" itemid="CV">CV</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/aau" itemid="AAU">Aalborg University</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/uts" itemid="UTS">University of Technology Sydney</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/work" itemid="WORK">Work Experience</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/certificate" itemid="CERT">Certificates</a>
-            </li>
           </ul>
         </div>
     </div>
@@ -166,43 +136,14 @@
 <div class="container-fluid">
   <div class="row content">
     <div class="sidenav px-4 pt-4 bg-dark text-white">
-      <img src="/images/DAN.png" class="rounded-circle" width="100%" alt="Me">
-      {% if page.lang == "da-DK" %}
-      <h4 class="pt-4 text-white"><a href="/indexDK">Dan Kristiansen</a></h4>
-      {% else %}
-      <h4 class="pt-4 text-white"><a href="/index">Dan Kristiansen</a></h4>
-      {% endif %}
+      <img src="/images/Kristina.png" class="rounded-circle" width="100%" alt="Me">
+      <h4 class="pt-4 text-white"><a href="/index">Kristina Vestermark</a></h4>
       <ul class="nav flex-column">
-        <li class="pl-3"> <a class="mr-2" href="https://www.linkedin.com/in/dan-kristiansen-35a460161"><img width="25px" src="/images/linkedin.png"></a><a class="mr-2" href="https://github.com/dank100"><img width="25px" src="/images/github-logo.png"></a><a href="https://gitlab.com/DanK0"><img width="25px" src="/images/gitlab-logo.png"></a></li>
+        <li class="pl-3"> <a class="mr-2" href="https://www.linkedin.com/in/kristina-marie-vestermark-jones-2359a7149"><img width="25px" src="/images/linkedin.png"></a></li>
           <li class="nav-item">
-              <a class="nav-link" href="/index" itemid="CV">CV</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/aau" itemid="AAU">Aalborg University</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/uts" itemid="UTS">University of Technology Sydney</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/work" itemid="WORK">Work Experience</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/certificate" itemid="CERT">Certificates</a>
+            <a class="nav-link" href="/index" itemid="CV">CV</a>
           </li>
       </ul>
-      <div class="pb-4 pl-5 fixed-bottom text-align-bottom">     
-        {% if page.type != "page" %}
-          {% assign posts=site.posts | where:"lang-ref", page.lang-ref %}
-          {% assign dkposts=posts | where:"lang", "da-DK" %}
-          {% assign enposts=posts | where:"lang", "en" %}
-        {% else %}
-          {% assign pages=site.pages | where:"lang-ref", page.lang-ref %}
-          {% assign dkposts=pages | where:"lang", "da-DK" %}
-          {% assign enposts=pages | where:"lang", "en" %}
-        {% endif %}
-        <p><a class="languageselectors" languageselect="da-DK" href="{{ dkposts.first.url }}">Dansk</a> |
-        <a class="languageselectors" languageselect="en" href="{{ enposts.first.url }}">English</a></p>
-      </div>
     </div>
 
     <div class="material py-3 px-2" data-toggle="collapse" data-target="#collapseToggle.show">
