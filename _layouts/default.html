@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="dk">
+<head>
+  <title>Kristina Vestermark</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>  
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+  <style>
+    .language{
+      display: none;
+    }
+    .sidenav a.active{
+      text-decoration-line: underline;
+    }
+    .collapse a.active{
+      text-decoration-line: underline;
+    }
+@media screen and (min-width: 767px) {
+      hr{
+        width: 78vw;
+      }  
+      .sidenav {
+          min-height: 100vh;
+          position: fixed;
+          width: 250px;
+      }
+      .sidenav h4{
+        cursor: pointer;
+      }
+      .navbar{
+        display: none;
+      }
+      .material {
+        margin-left: 280px;
+        width: 130vh;
+        z-index: 1;
+      }
+      .sidenav a{
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+      }
+      .img-fluid{
+          max-width: 50vw;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      hr{
+        width: 90vw;
+      }
+      .sidenav {
+        display: none;
+      }
+      .pos-f-t a{
+        text-decoration: none;
+        color: white;
+      }
+      .navbar {
+        height: 65px;
+        display: block;
+        position: fixed;
+        width: 100vw;
+        z-index: 2;
+      }
+      .list-group {
+        z-index: 3;
+      }
+      .row.content {
+        padding-top: 60px;
+        height: auto;
+      }
+      .img-fluid{
+        margin-left: -2vw;
+        margin-right: -2vw;
+      }
+      #collapseToggle{
+        padding-top: 64px;
+        position: fixed;
+        vertical-align: center;
+        text-align: center;
+        width: 100vw;
+        z-index: 1;
+      }
+    }
+  </style>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+  <script>
+  window.addEventListener("load", function(){
+  window.cookieconsent.initialise({
+    "cookie": {
+      "name": 'Kristina Vestermark'
+    },
+    "palette": {
+      "popup": {
+        "background": "#3c404d",
+        "text": "#d6d6d6"
+      },
+      "button": {
+        "background": "#8bed4f"
+      }
+    },
+    "theme": "classic"
+  })});
+  </script>
+</head>
+<body>
+
+<div class="pos-f-t">
+    <nav class="navbar navbar-dark bg-dark">
+        {% if page.lang == "da-DK" %}
+        <a href="/indexDK"><img src="/images/DAN.png" class="rounded-circle" height="65px" alt="Me"></a>
+        <a class="navbar-brand nav-link text-white" href="/indexDK">Dan Kristiansen</a>
+        {% else %}
+        <a href="/index"><img src="/images/DAN.png" class="rounded-circle" height="65px" alt="Me"></a>
+        <a class="navbar-brand nav-link text-white" href="/index">Dan Kristiansen</a>
+        {% endif %}
+      <button id="toggle-content" class="mt-1 navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#collapseToggle">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+    <div class="collapse" id="collapseToggle">
+        <div class="bg-dark text-white">
+          <ul class="nav flex-column">
+              <li class="pt-1"> <a class="mr-2" href="https://www.linkedin.com/in/dan-kristiansen-35a460161"><img width="25px" src="/images/linkedin.png"></a><a class="mr-2" href="https://github.com/dank100"><img width="25px" src="/images/github-logo.png"></a><a href="https://gitlab.com/DanK0"><img width="25px" src="/images/gitlab-logo.png"></a></li>
+              <li class="nav-item">
+              <p>Languages:
+              {% if page.type != "page" %}
+                {% assign posts=site.posts | where:"lang-ref", page.lang-ref %}
+                {% assign dkposts=posts | where:"lang", "da-DK" %}
+                {% assign enposts=posts | where:"lang", "en" %}
+              {% else %}
+                {% assign pages=site.pages | where:"lang-ref", page.lang-ref %}
+                {% assign dkposts=pages | where:"lang", "da-DK" %}
+                {% assign enposts=pages | where:"lang", "en" %}
+              {% endif %}
+              <a class="languageselectors" languageselect="da-DK" href="{{ dkposts.first.url }}">Da</a> |
+              <a class="languageselectors" languageselect="en" href="{{ enposts.first.url }}">En</a>
+              </p>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/index" itemid="CV">CV</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/aau" itemid="AAU">Aalborg University</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/uts" itemid="UTS">University of Technology Sydney</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/work" itemid="WORK">Work Experience</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/certificate" itemid="CERT">Certificates</a>
+            </li>
+          </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="sidenav px-4 pt-4 bg-dark text-white">
+      <img src="/images/DAN.png" class="rounded-circle" width="100%" alt="Me">
+      {% if page.lang == "da-DK" %}
+      <h4 class="pt-4 text-white"><a href="/indexDK">Dan Kristiansen</a></h4>
+      {% else %}
+      <h4 class="pt-4 text-white"><a href="/index">Dan Kristiansen</a></h4>
+      {% endif %}
+      <ul class="nav flex-column">
+        <li class="pl-3"> <a class="mr-2" href="https://www.linkedin.com/in/dan-kristiansen-35a460161"><img width="25px" src="/images/linkedin.png"></a><a class="mr-2" href="https://github.com/dank100"><img width="25px" src="/images/github-logo.png"></a><a href="https://gitlab.com/DanK0"><img width="25px" src="/images/gitlab-logo.png"></a></li>
+          <li class="nav-item">
+              <a class="nav-link" href="/index" itemid="CV">CV</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/aau" itemid="AAU">Aalborg University</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/uts" itemid="UTS">University of Technology Sydney</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/work" itemid="WORK">Work Experience</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/certificate" itemid="CERT">Certificates</a>
+          </li>
+      </ul>
+      <div class="pb-4 pl-5 fixed-bottom text-align-bottom">     
+        {% if page.type != "page" %}
+          {% assign posts=site.posts | where:"lang-ref", page.lang-ref %}
+          {% assign dkposts=posts | where:"lang", "da-DK" %}
+          {% assign enposts=posts | where:"lang", "en" %}
+        {% else %}
+          {% assign pages=site.pages | where:"lang-ref", page.lang-ref %}
+          {% assign dkposts=pages | where:"lang", "da-DK" %}
+          {% assign enposts=pages | where:"lang", "en" %}
+        {% endif %}
+        <p><a class="languageselectors" languageselect="da-DK" href="{{ dkposts.first.url }}">Dansk</a> |
+        <a class="languageselectors" languageselect="en" href="{{ enposts.first.url }}">English</a></p>
+      </div>
+    </div>
+
+    <div class="material py-3 px-2" data-toggle="collapse" data-target="#collapseToggle.show">
+        {{ content }}
+    </div>
+  </div>
+</div>
+</body>
+
+<script>
+  var userLang = Cookies.get("language") || navigator.language || navigator.userLanguage;
+    
+  if(userLang != "{{page.lang}}"){
+    if (userLang == "da-DK"){
+      location.href = "{{ dkposts.first.url }}";
+    }
+    else{
+      Cookies.set("language", "en");
+      location.href = "{{ enposts.first.url }}";
+    }
+  }
+
+  $("[languageselect=" + userLang + "]").addClass("active");
+  $(".languageselectors").on("click",function(){
+    $(".languageselectors").removeClass("active");
+    $(this).addClass("active");
+    userLang = $(this).attr('languageselect');
+    Cookies.set("language", userLang);
+  });
+
+  function ago(date) {
+    function render(n, unit) {
+        return n + " " + unit + ((n == 1) ? "" : "s") + " ago";
+    }
+
+    var seconds = Math.floor((new Date() - date) / 1000);
+
+    var interval = Math.floor(seconds / (60 * 60 * 24 * 365));
+    if (Math.floor(seconds / (60 * 60 * 24 * 30 * 365)) >= 1) {
+        return render(interval, "year");
+    }
+    interval = Math.floor(seconds / (60 * 60 * 24 * 30));
+    if (interval >= 1) {
+        return render(interval, "month");
+    }
+    interval = Math.floor(seconds / (60 * 60 * 24));
+    if (interval >= 1) {
+        return render(interval, "day");
+    }
+    interval = Math.floor(seconds / (60 * 60));
+    if (interval >= 1) {
+        return render(interval, "hour");
+    }
+    interval = Math.floor(seconds / 60);
+    if (interval >= 1) {
+        return render(interval, "minute");
+    }
+    interval = Math.floor(seconds);
+    return render(interval, "second");
+  }
+
+  function agoDK(date) {
+    function render(n, unit) {
+        return n + " " + unit + ((n == 1) ? "" : "s") + " siden";
+    }
+
+    var seconds = Math.floor((new Date() - date) / 1000);
+
+    var interval = Math.floor(seconds / (60 * 60 * 24 * 365));
+    if (Math.floor(seconds / (60 * 60 * 24 * 30 * 365)) >= 1) {
+        return render(interval, "år");
+    }
+    interval = Math.floor(seconds / (60 * 60 * 24 * 30));
+    if (interval >= 1) {
+        return render(interval, "måneder");
+    }
+    interval = Math.floor(seconds / (60 * 60 * 24));
+    if (interval >= 1) {
+        return render(interval, "dage");
+    }
+    interval = Math.floor(seconds / (60 * 60));
+    if (interval >= 1) {
+        return render(interval, "timer");
+    }
+    interval = Math.floor(seconds / 60);
+    if (interval >= 1) {
+        return render(interval, "minutter");
+    }
+    interval = Math.floor(seconds);
+    return render(interval, "sekunder");
+  }
+
+var dateDK = document.getElementsByClassName("postedonDK");
+var postDK = document.getElementsByClassName("postedagoDK");
+for(var i=0; i<dateDK.length; i++) {
+  postDK[i].innerHTML = agoDK(Date.parse(dateDK[i].getAttribute("datetime")));
+}
+
+var date = document.getElementsByClassName("postedon");
+var post = document.getElementsByClassName("postedago");
+for(var i=0; i<date.length; i++) {
+  post[i].innerHTML = ago(Date.parse(date[i].getAttribute("datetime")));
+}
+
+</script>
+</html>
