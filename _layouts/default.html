@@ -154,26 +154,6 @@
 </body>
 
 <script>
-  var userLang = Cookies.get("language") || navigator.language || navigator.userLanguage;
-    
-  if(userLang != "{{page.lang}}"){
-    if (userLang == "da-DK"){
-      location.href = "{{ dkposts.first.url }}";
-    }
-    else{
-      Cookies.set("language", "en");
-      location.href = "{{ enposts.first.url }}";
-    }
-  }
-
-  $("[languageselect=" + userLang + "]").addClass("active");
-  $(".languageselectors").on("click",function(){
-    $(".languageselectors").removeClass("active");
-    $(this).addClass("active");
-    userLang = $(this).attr('languageselect');
-    Cookies.set("language", userLang);
-  });
-
   function ago(date) {
     function render(n, unit) {
         return n + " " + unit + ((n == 1) ? "" : "s") + " ago";
