@@ -3,14 +3,12 @@ layout: default
 title: Uddannelse
 type: page
 lang: en
-lang-ref: education
 ---
 {% assign filtered_posts = site.posts | where: 'tag', "education"%}
-{% assign poststet = filtered_posts | where: 'lang', page.lang %}
 
 <h1>Uddannelse</h1>
 <hr>
-{% for post in poststet %}
+{% for post in filtered_posts %}
     <a href="{{ post.url }}" class="list-group-item list-group-item-action flex-column align-items-start">
         <div class="d-flex w-100 justify-content-between">
             <h3 class="mb-1">{{ post.title }}</h3>
